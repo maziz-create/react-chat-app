@@ -1,3 +1,4 @@
+// redisi neden kullanıyoruz? gelen mesajları veri tabanına kaydetmek için. veritabanı olarka kullanıyoruz.
 const redis = require("redis");
 
 const getClient = () => {
