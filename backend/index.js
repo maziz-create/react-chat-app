@@ -21,9 +21,15 @@ io.on("connection", (socket) => {
 
 	socket.on("new-message", (message) => {
 		console.log(message);
+
+		//mesaj düştüğü anda redise yazılıyor
 		Messages.upsert({ message });
 
+		//mesajı gönderen haricindekilere receive-message kodu ile message gönderiyoruz.(broadcast)
+		//herkese göndermek istersek io.emit kullanmalıyız.
+		
 		socket.broadcast.emit("receive-message", message);
+		// io.emit("receive-message", message);
 	});
 
 	socket.on("disconnect", () => console.log("a user disconnected"));
